@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding-top: 20px;
 }
 
 .App-logo {
@@ -25,4 +26,19 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+#room-list {
+  float:left;
+  width: 200px;
+}
+
+#active-room {
+  display: block;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+#new-room {
+  margin-top: 20px;
 }

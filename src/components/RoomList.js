@@ -40,17 +40,26 @@ class RoomList extends Component {
     this.setState({ newRoomName: e.target.value })
   }
 
+
   render() {
     return (
 
-      <main>
-        {
-          this.state.rooms.map( (room,index) =>
-            <p key={room.name + index}>{room.name}</p>
-          )
-        }
+      <main id="room-list">
+        <table>
+          <tbody>
 
-        <p>{this.state.newRoomName}</p>
+
+              {
+                this.state.rooms.map( (room,index) =>
+                <tr key={index}>
+                    <td id={this.props.activeRoom === room.key ? "active-room" : "inactive-room"} onClick={() => this.props.setActiveRoom(room.key)}>{room.name}</td>
+                </tr>
+                )
+              }
+
+
+          </tbody>
+        </table>
 
         <form id="new-room" onSubmit={this.addRoom}>
           <input type="text" onChange={this.onChange} value={this.state.newRoomName} placeholder="New Room Name" />
