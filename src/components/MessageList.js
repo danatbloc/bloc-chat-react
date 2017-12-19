@@ -19,9 +19,10 @@ class MessageList extends Component {
   componentWillReceiveProps = (nextProps) => {
       this.setState({ messages: [] });
 
-      this.messagesRef.orderByChild("roomId").equalTo(nextProps.activeRoom).off();
+      this.messagesRef.off();
       this.messagesRef.orderByChild("roomId").equalTo(nextProps.activeRoom).on('child_added', this.updateMessages);
   }
+
 
 
   // componentWillReceiveProps = (nextProps) => {
