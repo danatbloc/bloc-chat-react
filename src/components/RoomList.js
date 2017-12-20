@@ -52,7 +52,7 @@ class RoomList extends Component {
               {
                 this.state.rooms.map( (room,index) =>
                 <tr key={index}>
-                    <td id={this.props.activeRoom === room.key ? "active-room" : "inactive-room"} onClick={() => this.props.setActiveRoom(room.key)}>{room.name}</td>
+                    <td id={this.props.activeRoom === room.key ? "active-room" : "inactive-room"} onClick={() => this.props.setActiveRoom(room.key, room.name)}>{room.name}</td>
                 </tr>
                 )
               }
