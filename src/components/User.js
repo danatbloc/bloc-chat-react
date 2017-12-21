@@ -26,8 +26,8 @@ class User extends Component {
     return(
       <div>
         <p>Signed in as: {this.props.user.displayName}</p>
-        <button onClick={this.signInWithPopup}>Sign In</button>
-        <button onClick={this.signOut}>Sign Out</button>
+        <button className={this.props.user.displayName==="guest" ? "show-button" : "hide-button"} onClick={this.signInWithPopup}>Sign In</button>
+        <button className={this.props.user.displayName==="guest" ? "hide-button" : "show-button"} onClick={this.signOut}>Sign Out</button>
       </div>
     );
   }
