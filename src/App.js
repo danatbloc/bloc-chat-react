@@ -25,21 +25,24 @@ class App extends Component {
       activeRoom: "",
       activeRoomName: "",
       user: {
-        displayName: ""
+        displayName: "",
+        key: ""
       }
     }
   }
 
-  setActiveRoom = (room, roomName) => {
-    this.setState({ activeRoom: room });
+  setActiveRoom = (roomKey, roomName) => {
+    this.setState({ activeRoom: roomKey });
     this.setState({ activeRoomName: roomName })
   }
 
-  setUser = (newuser) => {
+  setUser = (newuser, key) => {
     var user = {...this.state.user};
     user.displayName = newuser;
+    user.key = key;
     this.setState({ user });
   }
+
 
   render() {
     return (
@@ -49,6 +52,7 @@ class App extends Component {
             firebase={firebase}
             user={this.state.user}
         />
+
         <RoomList
             firebase={firebase}
             setActiveRoom={(r,n) => this.setActiveRoom(r,n)}

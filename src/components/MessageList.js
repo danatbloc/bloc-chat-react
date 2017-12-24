@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Message from './Message'
+
 
 class MessageList extends Component {
 
@@ -25,15 +27,34 @@ class MessageList extends Component {
     }
   }
 
+  deleteMessage = (key) => {
+    this.messagesRef.child(key).remove();
+    this.setState({ messages: this.state.messages.filter((m) => m.key !== key )});
+  }
+
+  updateEditedMessage = (editedMessage, index) => {
+    let message = this.state.messages.slice(index, index+1)[0];
+    message.content = editedMessage;
+    this.setState({ message });
+  }
+
   render() {
     return(
-      <div>
-      <p>Room: {this.props.activeRoomName}</p>
-      {
-        this.state.messages.sort((a,b) => a.sentAt - b.sentAt ).map((message, index) =>
-          <p key={index}>{message.roomId===this.props.activeRoom ? (`${message.username}: ${message.content}  - ${new Date(message.sentAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`) : ""}</p>
-        )
-      }
+      <div id="message-list-component">
+        <p id="room-header"><b>Room: {this.props.activeRoomName}</b></p>
+        {
+          this.state.messages.sort((a,b) => a.sentAt - b.sentAt ).map((message, index) =>
+            <Message
+              key={index}
+              message={message}
+              index={index}
+              activeRoom={this.props.activeRoom}
+              deleteMessage={(k)=>this.deleteMessage(k)}
+              firebase={this.props.firebase}
+              updateEditedMessage={(m,i)=>this.updateEditedMessage(m,i)}
+            />
+          )
+        }
       </div>
     );
   }

@@ -1,9 +1,12 @@
 .App {
-  text-align: center;
+  text-align: left;
   padding-top: 20px;
 }
 
-
+#signed-in-name {
+  display: inline-block;
+  margin: 0 20px 20px 0;
+}
 
 #room-list {
   float:left;
@@ -11,9 +14,12 @@
 }
 
 #active-room {
-  display: block;
   font-weight: bold;
   border: 1px solid black;
+}
+
+#room-header {
+  text-decoration: underline;
 }
 
 #new-room {
@@ -21,9 +27,19 @@
 }
 
 .show-button {
-
+  display: inline-block;
 }
 
 .hide-button {
   display: none;
+}
+
+#message-list-component {
+  margin-left: 220px;
+  width: 70%;
+}
+
+.message {
+  margin-bottom: 8px;
+  line-height: 1.3rem;
 }
